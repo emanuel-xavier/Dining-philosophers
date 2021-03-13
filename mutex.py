@@ -91,5 +91,7 @@ for i in names: # initialize all threads/philosophers
     t.start()
     pos += 1
 
-for x in threads: # wait until all threads finish them work
+for x in threads: # wait until all threads finish working
     x.join()
+print('All the philosophers are satisfied.')
+time.sleep(5)
