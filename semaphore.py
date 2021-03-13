@@ -20,12 +20,12 @@ semaphore = []
 # for i in range(0, n, 1): # set all chopsticks in the table
     # chopsticks.append(True)
 
-dishes_is_full = [] # { True: philosopher already ate the food in this place, False: There is food on the dish }
+dishes_is_full = [] # { false: philosopher already ate the food in this place, true: There is food on the dish }
 for i in range(0, n, 1): # set all dishes as full
     dishes_is_full.append(True)
 
-philosophers_state = [] # hangry,  eating or thinking
-for i in range(0, n, 1): # set all philosophers' stats as thinking
+philosophers_state = [] # hungry,  eating or thinking
+for i in range(0, n, 1): # set all philosophers' stats as hungry
     philosophers_state.append(hungry)
 
 ############## INITIALIZATION END ##############
@@ -41,16 +41,22 @@ def left (num): # get the left philosophers index
 def eat (pos): # the philosophers start to eat
     global philosophers_state
     global dishes_is_full
+    global names
 
     philosophers_state[pos] = eating # set the philosopher's state as 'eating'
-    time.sleep(random.randint(3, 5)) # each philosophers takes something between 3 and 5 seconds to eat
+    print(names[pos] + ' is eating...')
+    
+    time.sleep(random.randint(3, 5)) # each philosopher takes between 3 and 5 seconds to eat
     dishes_is_full[pos] = False # set the philosophers dish as empty
+    print(names[pos] + ' is satisifed.')
 
 def think (pos):
     global philosophers_state
+    global names
 
+    print(names[pos] + ' is thinking...')
     philosophers_state[pos] = thinking # set the philosopher's state as 'eating'
-    time.sleep(random.randint(5, 7)) # each philosophers takes something between 5 and 7 seconds to think
+    time.sleep(random.randint(5, 7)) # each philosopher takes between 5 and 7 seconds to think
 
 def philosopher (pos):
     global semaphore
@@ -63,17 +69,15 @@ def philosopher (pos):
         semaphore[left(pos)].acquire() # wait for the left chopstick
 
         if semaphore[right(pos)].acquire(False): # try to get the right chopstick
-            print(str(pos) + ' is eating')
-            eat(pos) # the philosopher gonna stop to eat
-            print(str(pos) + ' already eat')
+            eat(pos) # The philosopher eats
+
             semaphore[left(pos)].release() # free the left chopstick before back to think
             semaphore[right(pos)].release() # free the right chopstick
-            dishes_is_full[pos] = False
             think(pos)
 
         else:
             semaphore[left(pos)].release() # free the left chopstick
-            print(str(pos) + ' could not eat, right chopstick was unvliable')
+            print(names[pos] + ' could not eat, the right chopstick was unavaliable.')
             think(pos)
 
 ############### FUNCTIONS END ################
@@ -87,5 +91,7 @@ for i in names: # initialize all threads/philosophers
     t.start()
     pos += 1
 
-for x in threads: # wait until all threads finish them work
+for x in threads: # wait until all threads finish working
     x.join()
+print('All the philosophers are satisfied.')
+time.sleep(5)
