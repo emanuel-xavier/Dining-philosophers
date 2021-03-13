@@ -41,16 +41,22 @@ def left (num): # get the left philosophers index
 def eat (pos): # the philosophers start to eat
     global philosophers_state
     global dishes_is_full
+    global names
 
     philosophers_state[pos] = eating # set the philosopher's state as 'eating'
-    time.sleep(random.randint(3, 5)) # each philosophers takes something between 3 and 5 seconds to eat
+    print(names[pos] + ' is eating...')
+    
+    time.sleep(random.randint(3, 5)) # each philosopher takes between 3 and 5 seconds to eat
     dishes_is_full[pos] = False # set the philosophers dish as empty
+    print(names[pos] + ' is satisifed.')
 
 def think (pos):
     global philosophers_state
+    global names
 
+    print(names[pos] + ' is thinking...')
     philosophers_state[pos] = thinking # set the philosopher's state as 'eating'
-    time.sleep(random.randint(5, 7)) # each philosophers takes something between 5 and 7 seconds to think
+    time.sleep(random.randint(5, 7)) # each philosopher takes between 5 and 7 seconds to think
 
 def philosopher (pos):
     global locks
@@ -63,17 +69,15 @@ def philosopher (pos):
         locks[left(pos)].acquire() # wait for the left chopstick
 
         if locks[right(pos)].acquire(False): # try to get the right chopstick
-            print(str(pos) + ' is eating')
-            eat(pos) # the philosopher gonna stop to eat
-            print(str(pos) + ' already eat')
+            eat(pos) # The philosopher eats
+
             locks[left(pos)].release() # free the left chopstick before back to think
             locks[right(pos)].release() # free the right chopstick
-            dishes_is_full[pos] = False
             think(pos)
 
         else:
             locks[left(pos)].release() # free the left chopstick
-            print(str(pos) + ' could not eat, right chopstick was unvliable')
+            print(names[pos] + ' could not eat, the right chopstick was unavaliable.')
             think(pos)
 
 ############### FUNCTIONS END ################
