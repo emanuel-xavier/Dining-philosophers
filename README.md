@@ -9,3 +9,5 @@ https://pt.stackoverflow.com/questions/283375/o-que-%c3%a9-o-problema-dos-fil%c3
 https://stackoverflow.com/questions/3310049/proper-use-of-mutexes-in-python
 
 https://stackoverflow.com/questions/31508574/semaphores-on-python
+
+https://www.biob.in/2018/04/simple-server-and-client-chat-using.html
