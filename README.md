@@ -10,8 +10,6 @@ https://stackoverflow.com/questions/3310049/proper-use-of-mutexes-in-python
 
 https://stackoverflow.com/questions/31508574/semaphores-on-python
 
-https://docs.python.org/pt-br/3/tutorial/classes.html
-
 https://youtu.be/EGJipyZBjbU
 
 https://docs.python.org/3/library/multiprocessing.html
