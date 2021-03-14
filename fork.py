@@ -2,11 +2,16 @@ import multiprocessing
 import random
 import time
 
+############## INITIALIZATION BEGIN ##############
+
 n = 5 # number of philosophers
 names = ['Philosofer 1', 'Philosofer 2', 'Philosofer 3', 'Philosofer 4', 'Philosofer 5']
 chopsticks = multiprocessing.Array('i', [0, 0, 0, 0, 0])
 dishes_is_full = multiprocessing.Array('i', [1, 1, 1, 1, 1])
-processes = []
+
+############## INITIALIZATION END ##############
+
+############### FUNCTIONS BEGIN ###############
 
 def right (num): # get the right philosophers index
     return (num + 1) % n
@@ -53,8 +58,11 @@ def philosopher (pos, dishes_is_full, chopsticks):
                 print(names[pos] + ' could not eat, the left chopstick was unavaliable.')
             think(pos, lock)
 
+############### FUNCTIONS END ################
 
 if __name__ == '__main__':
+    processes = []
+
     for pos in range (n):
         process = multiprocessing.Process(target=philosopher, args=(pos, dishes_is_full, chopsticks,))
         processes.append(process)
