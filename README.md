@@ -1,6 +1,6 @@
 # Dining-philosophers
 
-## Referencias
+## References
 
 1. https://www.geeksforgeeks.org/synchronization-by-using-semaphore-in-python/
 
