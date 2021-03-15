@@ -2,16 +2,17 @@
 
 ## Referencias
 
-https://www.geeksforgeeks.org/synchronization-by-using-semaphore-in-python/
+1. https://www.geeksforgeeks.org/synchronization-by-using-semaphore-in-python/
 
-https://pt.stackoverflow.com/questions/283375/o-que-%c3%a9-o-problema-dos-fil%c3%b3sofos-glut%c3%b5es#285313
+2. https://pt.stackoverflow.com/questions/283375/o-que-%c3%a9-o-problema-dos-fil%c3%b3sofos-glut%c3%b5es#285313
 
-https://stackoverflow.com/questions/3310049/proper-use-of-mutexes-in-python
+3. https://stackoverflow.com/questions/3310049/proper-use-of-mutexes-in-python
 
-https://stackoverflow.com/questions/31508574/semaphores-on-python
+4. https://stackoverflow.com/questions/31508574/semaphores-on-python
 
-https://youtu.be/EGJipyZBjbU
+5. https://youtu.be/EGJipyZBjbU
 
-https://docs.python.org/3/library/multiprocessing.html
+6. https://docs.python.org/3/library/multiprocessing.html
 
-https://youtu.be/uWbSc84he2Q
+7. https://youtu.be/uWbSc84he2Q
+
